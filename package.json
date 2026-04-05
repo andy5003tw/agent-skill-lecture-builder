@@ -1,0 +1,30 @@
+{
+  "name": "course",
+  "version": "1.0.0",
+  "description": "Markdown 講稿 → 單一 HTML 課程頁面。零依賴 Node.js 建置。",
+  "main": "index.js",
+  "scripts": {
+    "build": "node .agents/skills/course-page-generator/scripts/build.mjs",
+    "build:course": "node .agents/skills/course-page-generator/scripts/build.mjs course",
+    "dev": "node .agents/skills/course-page-generator/scripts/dev.mjs",
+    "dev:course": "node .agents/skills/course-page-generator/scripts/dev.mjs course",
+    "og": "node .agents/skills/course-page-generator/scripts/generate-og.mjs",
+    "og:course": "node .agents/skills/course-page-generator/scripts/generate-og.mjs course",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dean9703111/course.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dean9703111/course/issues"
+  },
+  "homepage": "https://github.com/dean9703111/course#readme",
+  "devDependencies": {
+    "puppeteer": "^24.39.1"
+  }
+}
