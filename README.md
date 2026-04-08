@@ -5,19 +5,31 @@
 ## Quick Start
 
 ```bash
-# 建立課程目錄
-mkdir -p example/assets
-
-# 準備內容與設定
-$EDITOR example/content.md
-$EDITOR example/config.yaml
-
-# 單純啟動本機預覽（會先 build，之後自動重建）
-node .agents/skills/course-page-generator/scripts/dev.mjs example
-
-# 或使用 package script
-npm run dev -- example
+# 安裝依賴（OG 縮圖產生需要 puppeteer）
+npm install
 ```
+
+在 AI 對話窗輸入「幫我生成課程頁面」這類指令，AI 會自動觸發 `course-page-generator` Skill 完成所有步驟。
+
+### 情境一：給主題，從零生成
+
+只提供主題，AI 自動生成完整課程內容：
+
+```
+扮演一位擅長用實際案例解說的資安專家，設計"生成式 AI 資訊安全"的講義並生成網頁，完成後直接啟動
+```
+
+AI 會依序：生成 `content.md` + `config.yaml` → build `index.html` → 產生 OG 縮圖 → 啟動本地預覽
+
+### 情境二：給講稿，輔助轉換
+
+提供現有的講稿、筆記或大綱，AI 將其轉換為結構化課程頁面：
+
+```
+幫我把這份講稿轉成課程頁面（貼上講稿內容，或指定檔案路徑）
+```
+
+AI 會依序：萃取重點轉為結構化 `content.md` → 建立 `config.yaml` → build `index.html` → 產生 OG 縮圖
 
 ## 專案結構
 
@@ -258,15 +270,3 @@ quotes:
 彈窗互動：
 - 點擊遮罩或右上角 ✕ 可關閉
 - 按 `Esc` 亦可關閉
-
-## AI Skill 工作流
-
-在 Cursor 中直接對 AI 說：
-
-> 幫我把這份講稿轉成課程頁面
-
-AI 會自動觸發 `course-page-generator` Skill：
-
-1. 將原始筆記轉換為約定的 Markdown 格式 → `content.md`
-2. 建立或確認 `config.yaml`
-3. 執行 `node .agents/skills/course-page-generator/scripts/build.mjs <dir>` → 產出 `index.html`
