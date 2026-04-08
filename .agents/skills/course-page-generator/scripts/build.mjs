@@ -210,6 +210,8 @@ function skipBlock(lines, start, end, parentIndent) {
   return i;
 }
 
+export { deepMerge, parseYamlFull, findGlobalConfig, loadConfig };
+
 // ─── Social SVG icons ───
 
 const SOCIAL_SVGS = {
@@ -1173,32 +1175,35 @@ function build(courseDir) {
   console.log(`   Sections: ${sections.length}, Sub-sections: ${sections.reduce((a, s) => a + s.subs.length, 0)}`);
 }
 
-// ─── CLI ───
+// ─── CLI (only when run directly, not when imported) ───
 
-const args = process.argv.slice(2);
-if (args.length < 1) {
-  console.log('Usage:');
-  console.log('  node build.mjs <course-dir>            # e.g. node build.mjs cake');
-  console.log('  node build.mjs <course-dir>/content.md  # explicit content path');
-  console.log('');
-  console.log('Config layering:');
-  console.log('  1. config/global.yaml     (base: instructor, socials, footer)');
-  console.log('  2. <course-dir>/config.yaml  (override: page, quotes, nav)');
-  process.exit(1);
+const __build_filename = fileURLToPath(import.meta.url);
+if (process.argv[1] === __build_filename) {
+  const args = process.argv.slice(2);
+  if (args.length < 1) {
+    console.log('Usage:');
+    console.log('  node build.mjs <course-dir>            # e.g. node build.mjs cake');
+    console.log('  node build.mjs <course-dir>/content.md  # explicit content path');
+    console.log('');
+    console.log('Config layering:');
+    console.log('  1. config/global.yaml     (base: instructor, socials, footer)');
+    console.log('  2. <course-dir>/config.yaml  (override: page, quotes, nav)');
+    process.exit(1);
+  }
+
+  let input = args[0];
+
+  // Resolve course directory from input
+  let courseDir;
+  const resolved = resolve(input);
+
+  if (existsSync(resolved) && statSync(resolved).isDirectory()) {
+    courseDir = resolved;
+  } else if (input.endsWith('.md')) {
+    courseDir = dirname(resolved);
+  } else {
+    courseDir = resolved;
+  }
+
+  build(courseDir);
 }
-
-let input = args[0];
-
-// Resolve course directory from input
-let courseDir;
-const resolved = resolve(input);
-
-if (existsSync(resolved) && statSync(resolved).isDirectory()) {
-  courseDir = resolved;
-} else if (input.endsWith('.md')) {
-  courseDir = dirname(resolved);
-} else {
-  courseDir = resolved;
-}
-
-build(courseDir);
