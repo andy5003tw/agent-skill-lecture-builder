@@ -1,0 +1,19 @@
+page:
+  title: "從 Vibe Coding 到可重複使用的講義模板"
+  badge: "Agent Skill × Course Page Generator"
+  hero_title: "從 Vibe Coding 到可重複使用的講義模板<br>把一次性成果變成長期可維護資產"
+  subtitle: "用一段草稿就能產生課程網頁，並透過 Markdown 與設定檔持續優化。"
+
+seo:
+  title: "從 Vibe Coding 到 Agent Skill：課程網頁生成實戰"
+  description: "示範如何把逐字稿轉成可維護的 Markdown 講義、產生 HTML，並啟動開發環境。"
+  image: "https://andy5003tw.github.io/agent-skill-lecture-builder/example/assets/og-image.jpg"
+  url: "https://andy5003tw.github.io/agent-skill-lecture-builder/example/"
+
+quotes:
+  opening:
+    text: "AI 真正厲害的，不是省下一次工作時間，而是把工作流變成可持續優化的系統。"
+  closing:
+    text: >
+      當你開始設計模板與流程，Vibe Coding 才會從 Demo 走向產品。<br>
+      先做出可維護的第一版，再持續迭代到你理想的樣子。

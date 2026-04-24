@@ -1,0 +1,19 @@
+page:
+  title: "生成式 AI 資訊安全"
+  badge: "Enterprise AI Security Playbook"
+  hero_title: "生成式 AI 資訊安全<br>從可用到可守"
+  subtitle: "用真實攻防案例建立團隊共同語言，讓 AI 上線不再靠運氣。"
+
+seo:
+  title: "生成式 AI 資訊安全：實戰案例講義"
+  description: "聚焦 Prompt Injection、資料外洩、RAG 污染、Agent 權限濫用與治理落地的企業實戰講義。"
+  image: "https://andy5003tw.github.io/agent-skill-lecture-builder/course/genai-infosec/assets/og-image.jpg"
+  url: "https://andy5003tw.github.io/agent-skill-lecture-builder/course/genai-infosec/"
+
+quotes:
+  opening:
+    text: "最危險的不是 AI 犯錯，而是我們把它當成永遠正確的同事。"
+  closing:
+    text: >
+      生成式 AI 安全不是一張清單，而是一套持續驗證的作業系統。<br>
+      今天開始，先把高風險流程收斂，再讓能力擴張。
